@@ -18,18 +18,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
-public class GitLabActivity extends ActionBarActivity {
+public class GitLabActivity extends ActionBarActivity implements View.OnClickListener {
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
-
+    protected Button button4 = null;
+    protected EditText editText = null;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -40,6 +45,9 @@ public class GitLabActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_git_lab);
 
+        button4 = (Button)findViewById(R.id.button4);
+        button4.setOnClickListener(this);
+        editText = (EditText)findViewById(R.id.editText);
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
 
@@ -103,6 +111,13 @@ public class GitLabActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.button4) {
+            editText.setText(new StringBuilder(editText.getText().toString()).reverse());
+        }
     }
 
     /**
