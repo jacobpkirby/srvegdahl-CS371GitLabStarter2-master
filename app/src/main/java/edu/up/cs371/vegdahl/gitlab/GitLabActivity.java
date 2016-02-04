@@ -28,6 +28,12 @@ import java.util.ArrayList;
 
 public class GitLabActivity extends ActionBarActivity implements View.OnClickListener {
 
+    protected Button copyButton = null;
+    protected Spinner spinner = null;
+    protected EditText editText = null;
+    protected Button  upperButton = null;
+    protected Button button4 = null;
+
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
@@ -45,16 +51,25 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_git_lab);
 
+        editText = (EditText)findViewById(R.id.editText);
+        copyButton = (Button)findViewById(R.id.copyButton);
+        copyButton.setOnClickListener(this);
         button4 = (Button)findViewById(R.id.button4);
         button4.setOnClickListener(this);
+
+        upperButton = (Button)findViewById(R.id.upperButton);
+        upperButton.setOnClickListener(this);
+
+
         editText = (EditText)findViewById(R.id.editText);
+
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
 
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
         // create adapter with the strings
@@ -120,6 +135,20 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.copyButton) {
+            String text = spinner.getSelectedItem().toString();
+            editText.append(text);
+        }
+        else if(v.getId()== R.id.upperButton) {
+            editText.setText(editText.getText().toString().toUpperCase());
+        }
+        else if (v.getId() == R.id.button4){
+            editText.setText(new StringBuilder(editText.getText().toString()).reverse());
+        }
+    }
+
     /**
      * class that handles our spinner's selection events
      */
@@ -134,6 +163,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
                                    int position, long id) {
             // set the image to the one corresponding to the index selected by the spinner
             imageView.setImageBitmap(images.get(position));
+
         }
 
         /**
