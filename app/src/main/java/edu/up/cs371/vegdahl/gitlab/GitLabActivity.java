@@ -34,6 +34,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
     protected EditText editText = null;
     protected Button  upperButton = null;
     protected Button button4 = null;
+    protected Button punctButton = null;
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -59,6 +60,8 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         copyButton.setOnClickListener(this);
         button4 = (Button)findViewById(R.id.button4);
         button4.setOnClickListener(this);
+        punctButton = (Button)findViewById(R.id.punctButton);
+        punctButton.setOnClickListener(this);
 
         upperButton = (Button)findViewById(R.id.upperButton);
         upperButton.setOnClickListener(this);
@@ -158,6 +161,26 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         if (v.getId() == R.id.button7)
         {
             editText.setText(editText.getText().toString().toLowerCase());
+        }
+
+        if(v.getId() == R.id.punctButton)
+        {
+            String tmp = editText.getText().toString();
+            tmp = tmp.replace(",", "");
+            tmp = tmp.replace(".", "");
+            tmp = tmp.replace(";", "");
+            tmp = tmp.replace("!", "");
+            tmp = tmp.replace("?", "");
+            tmp = tmp.replace("(", "");
+            tmp = tmp.replace(")", "");
+            tmp = tmp.replace("{", "");
+            tmp = tmp.replace("}", "");
+            tmp = tmp.replace("[", "");
+            tmp = tmp.replace("]", "");
+            tmp = tmp.replace("<", "");
+            tmp = tmp.replace(">", "");
+            tmp = tmp.replace("%", "");
+            editText.setText(tmp);
         }
     }
 
