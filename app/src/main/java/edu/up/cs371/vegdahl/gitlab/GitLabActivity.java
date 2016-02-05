@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,6 +45,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
     protected Button button;
 
     protected Button button7;
+    protected Button alternateButton;
 
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -59,6 +61,9 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         copyButton.setOnClickListener(this);
         button4 = (Button)findViewById(R.id.button4);
         button4.setOnClickListener(this);
+
+        alternateButton= (Button)findViewById(R.id.alternateButton);
+        alternateButton.setOnClickListener(this);
 
         upperButton = (Button)findViewById(R.id.upperButton);
         upperButton.setOnClickListener(this);
@@ -150,14 +155,29 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         else if (v.getId() == R.id.button4){
             editText.setText(new StringBuilder(editText.getText().toString()).reverse());
         }
-        if (v.getId() == R.id.button)
+        else if  (v.getId() == R.id.button)
         {
             editText.setText("");
         }
 
-        if (v.getId() == R.id.button7)
+        else if (v.getId() == R.id.button7)
         {
             editText.setText(editText.getText().toString().toLowerCase());
+        }
+         else if (v.getId() == R.id.alternateButton){
+            String text = editText.getText().toString();
+            for (int i = 0, len = text.length(); i < len; i++) {
+                char ch = text.charAt(i);
+                if (i % 2 == 0) {
+                    Character.toLowerCase(ch);
+                    editText.setText(ch);
+
+                } else {
+                  Character.toUpperCase(ch);
+                    editText.setText(ch);
+                }
+            }
+
         }
     }
 
