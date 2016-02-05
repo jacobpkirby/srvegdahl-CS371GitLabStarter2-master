@@ -11,6 +11,7 @@
         <item>@mipmap/vegdahl</item>
         <item>@mipmap/charlespic</item>
         <item>@mipmap/jacob</item>
+        <item>@mipmap/waitt</item>
     </array>
 
     <string-array name="spinner_names">
@@ -20,6 +21,7 @@
         <item>Dr. Michael Waitt</item>
         <item>Lord Charles Rayner</item>
         <item>Jacob Kirby</item>
+        <item>Waitt Master</item>
     </string-array>
 
 </resources>
