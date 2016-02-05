@@ -30,9 +30,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
 
     protected Button copyButton = null;
     protected Spinner spinner = null;
-    protected EditText editText = null;
     protected Button  upperButton = null;
-    protected Button button4 = null;
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -128,12 +126,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.button4) {
-            editText.setText(new StringBuilder(editText.getText().toString()).reverse());
-        }
-    }
+
 
     @Override
     public void onClick(View v) {
