@@ -10,6 +10,7 @@
         <item>@mipmap/nuxoll</item>
         <item>@mipmap/vegdahl</item>
         <item>@mipmap/charlespic</item>
+        <item>@mipmap/jacob</item>
     </array>
 
     <string-array name="spinner_names">
@@ -17,6 +18,7 @@
         <item>Dr. Andrew Nuxoll</item>
         <item>Dr. Steven Vegdahl</item>
         <item>Lord Charles Rayner</item>
+        <item>Jacob Kirby</item>
     </string-array>
 
 </resources>
