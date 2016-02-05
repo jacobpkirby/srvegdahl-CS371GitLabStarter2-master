@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,19 +27,24 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class GitLabActivity extends ActionBarActivity implements View.OnClickListener {
+public class GitLabActivity extends ActionBarActivity implements View.OnClickListener{
 
     protected Button copyButton = null;
     protected Spinner spinner = null;
+    protected EditText editText = null;
     protected Button  upperButton = null;
+    protected Button button4 = null;
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
-    protected Button button4 = null;
-    protected EditText editText = null;
+
+    protected Button button;
+
+    protected Button button7;
+
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -49,7 +55,6 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_git_lab);
 
-        editText = (EditText)findViewById(R.id.editText);
         copyButton = (Button)findViewById(R.id.copyButton);
         copyButton.setOnClickListener(this);
         button4 = (Button)findViewById(R.id.button4);
@@ -63,6 +68,13 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
 
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
+        button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(this);
+
+        button7 = (Button)findViewById(R.id.button7);
+        button7.setOnClickListener(this);
+
+        editText = (EditText)findViewById(R.id.editText);
 
         // Set up the spinner so that it shows the names in the spinner array resources
         //
@@ -126,8 +138,6 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
-
-
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.copyButton) {
@@ -139,6 +149,15 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         }
         else if (v.getId() == R.id.button4){
             editText.setText(new StringBuilder(editText.getText().toString()).reverse());
+        }
+        if (v.getId() == R.id.button)
+        {
+            editText.setText("");
+        }
+
+        if (v.getId() == R.id.button7)
+        {
+            editText.setText(editText.getText().toString().toLowerCase());
         }
     }
 
@@ -168,6 +187,10 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
             // your code here
         }
     }
+
+
+
+
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
