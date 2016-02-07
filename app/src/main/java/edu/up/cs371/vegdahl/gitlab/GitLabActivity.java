@@ -36,6 +36,9 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
     protected EditText editText = null;
     protected Button  upperButton = null;
     protected Button button4 = null;
+    protected Button punctButton = null;
+    protected Button noSpaceButton = null;
+
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -51,7 +54,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
 
         // perform superclass initialization; load the layout
@@ -62,12 +65,16 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         copyButton.setOnClickListener(this);
         button4 = (Button)findViewById(R.id.button4);
         button4.setOnClickListener(this);
+        punctButton = (Button)findViewById(R.id.punctButton);
+        punctButton.setOnClickListener(this);
 
         alternateButton= (Button)findViewById(R.id.alternateButton);
         alternateButton.setOnClickListener(this);
 
         upperButton = (Button)findViewById(R.id.upperButton);
         upperButton.setOnClickListener(this);
+        noSpaceButton = (Button)findViewById(R.id.noSpaceButton);
+        noSpaceButton.setOnClickListener(this);
 
 
         editText = (EditText)findViewById(R.id.editText);
@@ -156,14 +163,34 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         else if (v.getId() == R.id.button4){
             editText.setText(new StringBuilder(editText.getText().toString()).reverse());
         }
-        else if  (v.getId() == R.id.button)
+        if (v.getId() == R.id.button)
         {
             editText.setText("");
         }
 
-        else if (v.getId() == R.id.button7)
+        if (v.getId() == R.id.button7)
         {
             editText.setText(editText.getText().toString().toLowerCase());
+        }
+
+        if(v.getId() == R.id.punctButton)
+        {
+            String tmp = editText.getText().toString();
+            tmp = tmp.replace(",", "");
+            tmp = tmp.replace(".", "");
+            tmp = tmp.replace(";", "");
+            tmp = tmp.replace("!", "");
+            tmp = tmp.replace("?", "");
+            tmp = tmp.replace("(", "");
+            tmp = tmp.replace(")", "");
+            tmp = tmp.replace("{", "");
+            tmp = tmp.replace("}", "");
+            tmp = tmp.replace("[", "");
+            tmp = tmp.replace("]", "");
+            tmp = tmp.replace("<", "");
+            tmp = tmp.replace(">", "");
+            tmp = tmp.replace("%", "");
+            editText.setText(tmp);
         }
          else if (v.getId() == R.id.alternateButton){
 
@@ -176,6 +203,9 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
             editText.setText(str);
 
 
+        }
+        else if (v.getId() == R.id.noSpaceButton) {
+            editText.setText(editText.getText().toString().replaceAll("\\s+", ""));
         }
     }
 

@@ -135,7 +135,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="alternate"
+            android:text="Random Letter"
             android:id="@+id/alternateButton"
             android:textSize="@dimen/button_font_size"
             android:textColor="@color/button_text_color"
@@ -152,6 +152,20 @@
         android:layout_height="0sp"
         android:layout_weight="1"/>
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="punctButton"
+        android:id="@+id/punctButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Space"
+        android:id="@+id/noSpaceButton"
+        android:layout_gravity="right" />
 
     <LinearLayout
         android:orientation="horizontal"
