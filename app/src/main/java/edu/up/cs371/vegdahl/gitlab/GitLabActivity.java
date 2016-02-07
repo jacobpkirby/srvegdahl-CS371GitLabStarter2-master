@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GitLabActivity extends ActionBarActivity implements View.OnClickListener{
 
@@ -45,6 +47,7 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
     protected Button button;
 
     protected Button button7;
+    protected Button alternateButton;
 
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -62,6 +65,9 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
         button4.setOnClickListener(this);
         punctButton = (Button)findViewById(R.id.punctButton);
         punctButton.setOnClickListener(this);
+
+        alternateButton= (Button)findViewById(R.id.alternateButton);
+        alternateButton.setOnClickListener(this);
 
         upperButton = (Button)findViewById(R.id.upperButton);
         upperButton.setOnClickListener(this);
@@ -181,6 +187,18 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
             tmp = tmp.replace(">", "");
             tmp = tmp.replace("%", "");
             editText.setText(tmp);
+        }
+         else if (v.getId() == R.id.alternateButton){
+
+            Random rand = new Random();
+            int n = rand.nextInt(editText.getText().toString().length())+1;
+            char c = (char) (rand.nextInt(26) + 'a');
+            //System.out.println(c);
+            StringBuilder str = new StringBuilder(editText.getText().toString());
+            str.insert(n, c);
+            editText.setText(str);
+
+
         }
     }
 
