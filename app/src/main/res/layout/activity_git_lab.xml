@@ -200,8 +200,8 @@
         <Space
             android:layout_width="0sp"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:id="@+id/alternateButton" />
+            android:layout_weight="10"/>
+
 
     </LinearLayout>
 

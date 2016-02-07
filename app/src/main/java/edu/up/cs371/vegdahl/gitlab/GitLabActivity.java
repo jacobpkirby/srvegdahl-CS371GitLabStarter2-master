@@ -27,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GitLabActivity extends ActionBarActivity implements View.OnClickListener{
 
@@ -165,18 +166,15 @@ public class GitLabActivity extends ActionBarActivity implements View.OnClickLis
             editText.setText(editText.getText().toString().toLowerCase());
         }
          else if (v.getId() == R.id.alternateButton){
-            String text = editText.getText().toString();
-            for (int i = 0, len = text.length(); i < len; i++) {
-                char ch = text.charAt(i);
-                if (i % 2 == 0) {
-                    Character.toLowerCase(ch);
-                    editText.setText(ch);
 
-                } else {
-                  Character.toUpperCase(ch);
-                    editText.setText(ch);
-                }
-            }
+            Random rand = new Random();
+            int n = rand.nextInt(editText.getText().toString().length())+1;
+            char c = (char) (rand.nextInt(26) + 'a');
+            //System.out.println(c);
+            StringBuilder str = new StringBuilder(editText.getText().toString());
+            str.insert(n, c);
+            editText.setText(str);
+
 
         }
     }
